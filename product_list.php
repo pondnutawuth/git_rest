@@ -65,13 +65,23 @@
 
     function open_bill(idx,cus_id){
         qty = document.getElementById("n"+idx);
+        out3-document.getElementById("out3");
         price = arr[idx][5];
         //alert("product_code="+arr[idx][1]+"="+qty.value+",price="+price);
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){ 
             if(this.readyState==4 && this.status==200){
-                alert(this.responseText);
+                arr2=json.parse(this.responseText);
+                t1=json.parse(arr2["bill"])[0];
+                text="<table border='1'><tr>";
+                text += "<tr><th>Bill Id</th><th>Cus_ID</th><th>EmpID</th><th>Bill Date</th><th>Bill Status</th> <th>Remash</th></tr>";
+                for(x=0;x<t1.length;x++){
+                   text += "<td>"+arr[i][j]+"</td>";
+                }
+                text += "<td>"+"<button onclick ='sel_product("+i+")'><ShopShock></button>"+"</td>";
+                text ="<tr>"+text+"</tr>";
             }
+            text += "</table>";
         }
         xhttp.open("POST","product_rest.php",true);
         xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");

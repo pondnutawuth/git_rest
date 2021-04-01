@@ -3,7 +3,7 @@
     class database{
         private $db;
         function connect(){
-            $this->db = new mysqli("localhost","root","","shopshock");
+            $this->db = new mysqli("localhost","root","12345678","shopshock");
             $this->db->set_charset("utf8");
             if($this->db->connect_errno) echo "Error something";
         } 
